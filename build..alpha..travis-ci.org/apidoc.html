@@ -1,0 +1,178 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+    >sass (v0.5.0)</a>
+</h1>
+<h4>Syntactically Awesome Stylesheets (compiles to css)</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sass">module sass</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sass.collect">
+            function <span class="apidocSignatureSpan">sass.</span>collect
+            <span class="apidocSignatureSpan">(sass)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sass.render">
+            function <span class="apidocSignatureSpan">sass.</span>render
+            <span class="apidocSignatureSpan">(sass, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sass.</span>expansions</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">sass.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sass" id="apidoc.module.sass">module sass</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sass.collect" id="apidoc.element.sass.collect">
+        function <span class="apidocSignatureSpan">sass.</span>collect
+        <span class="apidocSignatureSpan">(sass)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">collect = function (sass) {
+  return parse(tokenize(sass))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Usage
+
+var sass = require(&#x27;sass&#x27;)
+sass.render(&#x27;... string of sass ...&#x27;)
+// =&#x3e; &#x27;... string of css ...&#x27;
+
+sass.<span class="apidocCodeKeywordSpan">collect</span>(&#x27;... string of sass ...&#x27;)
+// =&#x3e; { selectors: [...], variables: { ... }, mixins: { ... }}
+
+## Comments
+
+// foo
+body
+  // bar
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sass.render" id="apidoc.element.sass.render">
+        function <span class="apidocSignatureSpan">sass.</span>render
+        <span class="apidocSignatureSpan">(sass, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">render = function (sass, options) {
+  options = options || {}
+  if (options.cache &#x26;&#x26; !options.filename)
+    throw new Error(&#x27;filename option must be passed when cache is enabled&#x27;)
+  if (options.cache)
+    return cache[options.filename]
+      ? cache[options.filename]
+      : cache[options.filename] = compile(exports.collect(sass).selectors)
+  return compile(exports.collect(sass).selectors)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+npm:
+
+      $ npm install sass
+
+## Usage
+
+    var sass = require(&#x27;sass&#x27;)
+    sass.<span class="apidocCodeKeywordSpan">render</span>(&#x27;... string of sass ...&#x27;)
+    // =&#x3e; &#x27;... string of css ...&#x27;
+
+    sass.collect(&#x27;... string of sass ...&#x27;)
+    // =&#x3e; { selectors: [...], variables: { ... }, mixins: { ... }}
+
+## Comments
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>

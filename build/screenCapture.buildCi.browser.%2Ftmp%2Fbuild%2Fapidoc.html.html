@@ -74,6 +74,12 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>sass</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sass.</span>expansions</span>
 
         </li>
@@ -81,6 +87,40 @@
         <li>
 
             <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">sass.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sass.sass">module sass.sass</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sass.sass.collect">
+            function <span class="apidocSignatureSpan">sass.sass.</span>collect
+            <span class="apidocSignatureSpan">(sass)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sass.sass.render">
+            function <span class="apidocSignatureSpan">sass.sass.</span>render
+            <span class="apidocSignatureSpan">(sass, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sass.sass.</span>expansions</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">sass.sass.</span>version</span>
 
         </li>
 
@@ -126,6 +166,85 @@ body
     <h2>
         <a href="#apidoc.element.sass.render" id="apidoc.element.sass.render">
         function <span class="apidocSignatureSpan">sass.</span>render
+        <span class="apidocSignatureSpan">(sass, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">render = function (sass, options) {
+  options = options || {}
+  if (options.cache &amp;&amp; !options.filename)
+    throw new Error('filename option must be passed when cache is enabled')
+  if (options.cache)
+    return cache[options.filename]
+      ? cache[options.filename]
+      : cache[options.filename] = compile(exports.collect(sass).selectors)
+  return compile(exports.collect(sass).selectors)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+npm:
+
+      $ npm install sass
+
+## Usage
+
+    var sass = require('sass')
+    sass.<span class="apidocCodeKeywordSpan">render</span>('... string of sass ...')
+    // =&gt; '... string of css ...'
+
+    sass.collect('... string of sass ...')
+    // =&gt; { selectors: [...], variables: { ... }, mixins: { ... }}
+
+## Comments
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sass.sass" id="apidoc.module.sass.sass">module sass.sass</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sass.sass.collect" id="apidoc.element.sass.sass.collect">
+        function <span class="apidocSignatureSpan">sass.sass.</span>collect
+        <span class="apidocSignatureSpan">(sass)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">collect = function (sass) {
+  return parse(tokenize(sass))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Usage
+
+var sass = require('sass')
+sass.render('... string of sass ...')
+// =&gt; '... string of css ...'
+
+sass.<span class="apidocCodeKeywordSpan">collect</span>('... string of sass ...')
+// =&gt; { selectors: [...], variables: { ... }, mixins: { ... }}
+
+## Comments
+
+// foo
+body
+  // bar
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sass.sass.render" id="apidoc.element.sass.sass.render">
+        function <span class="apidocSignatureSpan">sass.sass.</span>render
         <span class="apidocSignatureSpan">(sass, options)</span>
         </a>
     </h2>
